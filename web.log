@@ -13,7 +13,7 @@ remove html is installed
 downlaod web package from https is installed
 change the directory is installed
 Archive:  /tmp/web.zip
-  inflating: cart.html               
+  inflating: user.html               
    creating: css/
   inflating: css/auto-complete.css   
   inflating: css/style.css           
