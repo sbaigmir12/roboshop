@@ -28,6 +28,8 @@ VALIDATE $? "added roboshop"
 curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip
 VALIDATE $? "cart zip downloaded"
 
+mkdir /app
+VALIDATE $? "change to /app directory"
 cd /app
 VALIDATE $? "cd to app"
 
