@@ -1,0 +1,53 @@
+Last metadata expiration check: 0:04:10 ago on Mon 25 Sep 2023 01:42:13 PM UTC.
+Package nginx-1:1.14.1-9.module_el8.0.0+1060+3ab382d3.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+nginx install is installed
+enable nginx is installed
+start nginx is installed
+remove html is installed
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 1101k  100 1101k    0     0  7706k      0 --:--:-- --:--:-- --:--:-- 7706k
+downlaod web package from https is installed
+change the directory is installed
+Archive:  /tmp/web.zip
+  inflating: cart.html               
+   creating: css/
+  inflating: css/auto-complete.css   
+  inflating: css/style.css           
+  inflating: empty.html              
+  inflating: eum.html                
+   creating: images/
+  inflating: images/PB-1.jpg         
+  inflating: images/EVE-1.jpg        
+  inflating: images/HHGTTG.jpg       
+  inflating: images/STAN-1.jpg       
+  inflating: images/STNG.jpg         
+  inflating: images/RD-10.jpg        
+  inflating: images/C3P0.jpg         
+  inflating: images/K9.jpg           
+  inflating: images/placeholder.jpg  
+  inflating: images/ROB-1.jpg        
+  inflating: images/HAL-1.jpg        
+  inflating: images/R2D2.jpg         
+  inflating: index.html              
+   creating: js/
+  inflating: js/controller.js        
+  inflating: js/auto-complete.js     
+  inflating: login.html              
+   creating: media/
+  inflating: media/stan.png          
+  inflating: media/graph.png         
+  inflating: media/instana_icon_square.png  
+  inflating: payment.html            
+  inflating: product.html            
+  inflating: search.html             
+  inflating: shipping.html           
+  inflating: splash.html             
+unzip web is installed
+cproboconf to /etc dir is installed
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+restart nginx is failure
