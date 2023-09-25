@@ -29,7 +29,7 @@ VALIDATE $? "enable redis"
 yum install redis -y
 VALIDATE $? "install redis"
 
-sed -i ''s/127.0.0.1/0.0.0.0/' /etc/redis.conf/
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf /etc/redis/redis.conf 
 VALIDATE $? "change ip to 0.0.0.0"
 
 
