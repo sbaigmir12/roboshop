@@ -1,30 +1,33 @@
 #!/bin/bash
+
 DATE=$(date +%F)
+LOGSDIR=/tmp
+# /home/centos/shellscript-logs/script-name-date.log
 SCRIPT_NAME=$0
-LOGDIR=/tmp
-LOGFILE=$LOGDIR/$DATE-$SCRIPT_NAME
-R="/e[31m"
-G="/e[32m]"
+LOGFILE=$LOGSDIR/$0-$DATE.log
 USERID=$(id -u)
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
+Y="\e[33m"
+
 if [ $USERID -ne 0 ];
 then
-   else "user must have root access"
-   exit 1
+    echo -e "$R ERROR:: Please run this script with root access $N"
+    exit 1
 fi
 
 VALIDATE(){
-	if [ $1 -ne 0 ]
-	then 
-	   echo "$2 is failure $R"
-	   exit 1
+    if [ $1 -ne 0 ];
+    then
+        echo -e "$2 ... $R FAILURE $N"
+        exit 1
     else
-	   echo "$2 is success $G"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
 
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash
-VALIDATE $? "package"
 
 yum install nodejs -y
 VALIDATE $? "nodejs is installed"
@@ -38,32 +41,44 @@ VALIDATE $? "dir got created"
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 VALIDATE $? "catalogue packge download"
 
-cd /app
-VALIDATE "change dir to app"
 
-unzip /tmp/catalogue.zip
-VALIDATE "unzip package"
+cd /app 
 
+VALIDATE $? "Moving into app directory"
 
-#downloading dependencies
-npm install
-VALIDATE "download dependencies"
+unzip /tmp/catalogue.zip 
 
-cp catalogue.service /etc/systemd/system/catalogue.service
-VALIDATE "copied .service  to /etc folder"
+VALIDATE $? "unzipping catalogue"
 
-systemctl daemon-reload
-VALIDATE $? "reload"
+npm install -y 
 
-systemctl enable catalogue
-VALIDATE $? "enable the catalogue"
+VALIDATE $? "Installing dependencies"
+
+# give full path of catalogue.service because we are inside /app
+cp /home/centos/roboshop/catalogue.service /etc/systemd/system/catalogue.service 
+
+VALIDATE $? "copying catalogue.service"
+
+systemctl daemon-reload 
+
+VALIDATE $? "daemon reload"
+
+systemctl enable catalogue 
+
+VALIDATE $? "Enabling Catalogue"
 
 systemctl start catalogue
-VALIDATE $? "start catalogue"
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
-VALIDATE $? "copied .repo to etc dir"
+VALIDATE $? "Starting Catalogue"
 
-yum install mongodb-org-shell -y
-VALIDATE $? "install mongo-db client"
+cp /home/centos/roboshop/mongo.repo /etc/yum.repos.d/mongo.repo 
 
+VALIDATE $? "Copying mongo repo"
+
+yum install mongodb-org-shell -y 
+
+VALIDATE $? "Installing mongo client"
+
+mongo --host 172.31.81.129  </app/schema/catalogue.js 
+
+VALIDATE $? "loading catalogue data into mongodb"
