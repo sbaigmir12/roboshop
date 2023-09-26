@@ -41,7 +41,7 @@ VALIDATE $? "unzip payment app"
 pip3.6 install -r requirements.txt
 VALIDATE $? "libraries got installed"
 
-cp /home/centos/roboshop/payment.service vim /etc/systemd/system/payment.service
+cp /home/centos/roboshop/payment.service /etc/systemd/system/payment.service
 VALIDATE $? "cp .service to /etc"
 
 systemctl daemon-reload
