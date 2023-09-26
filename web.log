@@ -9,7 +9,9 @@ start nginx is installed
 remove html is installed
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 1101k  100 1101k    0     0  7706k      0 --:--:-- --:--:-- --:--:-- 7706k
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1101k  100 1101k    0     0  7706k      0 --:--:-- --:--:-- --:--:-- 7706k
 downlaod web package from https is installed
 change the directory is installed
 Archive:  /tmp/web.zip
