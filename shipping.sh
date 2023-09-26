@@ -6,17 +6,17 @@ SCRIPT_NAME=$0
 
 USERID=$(id -u)
 if [ $USERID -ne 0 ];
-else
+then
    echo "user must have root access"
 fi
 
 VALIDATE(){
-if [ $2 -ne 0];
-then
-   echo "$2 is failure"
-else
-   echo "$2 is installed"
-fi
+   if [ $1 -ne 0 ];
+   then
+      echo "$2 is failure"
+   else
+      echo "$2 is installed"
+   fi
 }
 
 yum install maven -y
@@ -34,7 +34,7 @@ VALIDATE $? "downlaod shiiping pac"
 cd /app
 VALIDATE $? "cd to app"
 
-unzip /tmp/shipping.zip
+unzip -o /tmp/shipping.zip
 VALIDATE $? "unzip shipping fol"
 
 mvn clean package
