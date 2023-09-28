@@ -1,9 +1,9 @@
 #!/bin/bash
-NAMES=("myapp" "webapp")
+NAMES=("myapp" "webapp" "cart" "catalogue" "payment" "shipping")
 INSTANCE_TYPE=""
 IMAGE_ID=ami-0f5491949718e94f6
 SECURITY_GP_ID=sg-0fdaea7c119e6a3f8 
-DOMAIN_NAME= 
+DOMAIN_NAME= sattardevops.com
 
 for i in "${NAMES[@]}"
 do
