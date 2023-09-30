@@ -7,15 +7,15 @@ DOMAIN_NAME= sattardevops.com
 
 for i in "${NAMES[@]}"
 do
-	if [[ $i == mysql || $i == mongodb]]
-	then
+    if [[ $i == "mysql" || $i == "mongodb" ]]
+    then
 	   INSTANCE_TYPE="t3.medium"
     else
 	    INSTANCE_TYPE="t2.medium"
     fi
-	echo "create $i $INSTANCE_TYPE"
-	IP_ADDRESS=(aws ec2 run-instances --image-id "ami-0f5491949718e94f6"  --instance-type $INSTANCE_TYPE --security-group-ids $SECURITY_GROUP_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
-	echo "create $i: $IP_ADDRESS"
+    echo "create $i $INSTANCE_TYPE"
+    IP_ADDRESS=$(aws ec2 run-instances --image-id "ami-0f5491949718e94f6"  --instance-type $INSTANCE_TYPE --security-group-ids $SECURITY_GROUP_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
+    echo "create $i: $IP_ADDRESS"
 
 	aws route53 change-resource-record-sets --hosted-zone-id Z0820216GGA7ME4W82MS --change-batch '
     {
